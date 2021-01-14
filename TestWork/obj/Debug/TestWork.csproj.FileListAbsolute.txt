@@ -1,0 +1,17 @@
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\TestWork.exe.config
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\TestWork.exe
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\TestWork.pdb
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.csprojAssemblyReference.cache
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.csproj.CoreCompileInputs.cache
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.exe
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.pdb
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\EPPlus.dll
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\EPPlus.xml
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.csproj.CopyComplete
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\TestWork.exe.manifest
+C:\Users\Kirill\Desktop\TestWork\TestWork\bin\Debug\TestWork.application
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.exe.manifest
+C:\Users\Kirill\Desktop\TestWork\TestWork\obj\Debug\TestWork.application
