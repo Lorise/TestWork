@@ -10,12 +10,23 @@ namespace TestWork
         private readonly Data.Data _data = new Data.Data();
         private readonly List<Machine> _machines = new List<Machine>();
 
-        public Plan()
+        public bool Load()
         {
             if (!_data.Read())
+            {
                 Console.WriteLine("Error data read");
+                return false;
+            }
+
+            if (!_data.CheckHarmony())
+            {
+                Console.WriteLine("Error CheckHarmony");
+                return false;
+            }
 
             SetupMachines();
+
+            return true;
         }
 
         public void SetupMachines()
@@ -32,7 +43,7 @@ namespace TestWork
             {
                 Nomenclature nomenclature = _data.Nomenclatures.Find((nomenclature1 => nomenclature1.Id == party.NomenclatureId));
 
-                Machine machine = _machines.Find((machine1 => machine1.GeneralWokrTime == _machines.Min(m => m.GeneralWokrTime)));
+                Machine machine = _machines.Find((machine1 => machine1.GeneralWorkTime == _machines.Min(m => m.GeneralWorkTime)));
 
                 try
                 {
@@ -42,7 +53,7 @@ namespace TestWork
                         .OperationTime;
                     machine.AddWork(party.Id, nomenclature.Nomenclature_, time);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine($"Нет подходящей печи. Nomencloture: {nomenclature.Id}, MachineID: {machine.Id}");
                 }
@@ -59,15 +70,15 @@ namespace TestWork
             {
                 DateTime startTime = nowTime;
 
-                Console.WriteLine($"Tool: {machine.Name}, General time: {machine.GeneralWokrTime}");
+                Console.WriteLine($"Tool: {machine.Name}, General time: {machine.GeneralWorkTime}");
 
-                for (int i = 0; i < machine.WorksTime.Count; i++)
+                for (int i = 0; i < machine.WorkTimeList.Count; i++)
                 {
-                    workInfos.Add(new WorkInfo(machine.PartyId[i], machine.nomenclatureNames[i], machine.Name, startTime, startTime + machine.WorksTime[i]));
+                    workInfos.Add(new WorkInfo(machine.PartyIdList[i], machine.NomenclaturesList[i], machine.Name, startTime, startTime + machine.WorkTimeList[i]));
                     
                     Console.WriteLine(workInfos.Last());
 
-                    startTime += machine.WorksTime[i];
+                    startTime += machine.WorkTimeList[i];
                 }
             }
 

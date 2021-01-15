@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using OfficeOpenXml;
@@ -15,11 +16,41 @@ namespace TestWork.Data
 
         public bool Read()
         {
-            return ReadDataMachineTools() &&
-                   ReadDataNomenclatures() &&
-                   ReadDataParties() &&
-                   ReadDataTimes() &&
-                   CheckHarmony();
+            return ReadDataMachineTools() && ReadDataNomenclatures() && ReadDataParties() && ReadDataTimes();
+        }
+
+        public bool CheckHarmony()
+        {
+            bool check = true;
+
+            foreach (Time time in Times)
+            {
+                if (!MachineTools.Exists((tool => tool.Id == time.MachineToolId)))
+                {
+                    Console.WriteLine($"MachineTool ID not exist: {time.MachineToolId}");
+
+                    check = false;
+                }
+
+                if (!Nomenclatures.Exists((nomenclature => nomenclature.Id == time.NomenclatureId)))
+                {
+                    Console.WriteLine($"Nomenclature ID not exist: {time.NomenclatureId}");
+
+                    check = false;
+                }
+            }
+
+            foreach (Party party in Parties)
+            {
+                if (!Nomenclatures.Exists((nomenclature => nomenclature.Id == party.NomenclatureId)))
+                {
+                    Console.WriteLine($"Nomenclature ID not exist: {party.NomenclatureId}");
+
+                    check = false;
+                }
+            }
+
+            return check;
         }
 
         private bool ReadDataMachineTools()
@@ -70,7 +101,7 @@ namespace TestWork.Data
                     int id = int.Parse(strId);
                     string nomenclature = strNomenclature;
 
-                    if (Nomenclatures.Exists((nomenclature_ => nomenclature_.Id == id)))
+                    if (Nomenclatures.Exists((n => n.Id == id)))
                         return false;
 
                     Nomenclatures.Add(new Nomenclature(id, nomenclature));
@@ -142,24 +173,6 @@ namespace TestWork.Data
                     Times.Add(new Time(machineToolId, nomenclatureId, operationTime));
                 }
             }
-
-            return true;
-        }
-
-        private bool CheckHarmony()
-        {
-            foreach (Time time in Times)
-            {
-                if (!MachineTools.Exists((tool => tool.Id == time.MachineToolId)))
-                    return false;
-
-                if (!Nomenclatures.Exists((nomenclature => nomenclature.Id == time.NomenclatureId)))
-                    return false;
-            }
-
-            foreach (Party party in Parties)
-                if (!Nomenclatures.Exists((nomenclature => nomenclature.Id == party.NomenclatureId)))
-                    return false;
 
             return true;
         }

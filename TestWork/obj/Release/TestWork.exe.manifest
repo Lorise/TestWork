@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TestWork.exe" size="17344">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TestWork.exe" size="17856">
       <assemblyIdentity name="TestWork" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f6rnDKo6/tXmXs52xsWMuVp+q3/XAwPB4U8cr84L3Rg=</dsig:DigestValue>
+        <dsig:DigestValue>KctV1n0iuiUmfWC6VmcQ9D64TKtQXGkxmvcQuGzcYUY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -12,16 +12,23 @@ namespace TestWork
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             Plan plan = new Plan();
-            plan.Calculate();
+            if (plan.Load())
+            {
+                plan.Calculate();
 
-            List<WorkInfo> workInfos = plan.GetResult();
+                List<WorkInfo> workInfos = plan.GetResult();
 
-            Console.WriteLine();
-            foreach (WorkInfo workInfo in workInfos) 
-                Console.WriteLine(workInfo.ToString());
-            Console.WriteLine();
+                Console.WriteLine();
+                foreach (WorkInfo workInfo in workInfos)
+                    Console.WriteLine(workInfo.ToString());
+                Console.WriteLine();
 
-            PrintExcel(workInfos);
+                PrintExcel(workInfos);
+            }
+            else
+            {
+                Console.WriteLine("Plant load error");
+            }
 
             Console.WriteLine("Press enter");
             Console.ReadLine();

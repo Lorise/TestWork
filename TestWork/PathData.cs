@@ -4,7 +4,7 @@ namespace TestWork
 {
     static class PathData
     {
-        private static string Folder = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string Folder = AppDomain.CurrentDomain.BaseDirectory;
 
         public static string MachineTools = Folder + "machine_tools.xlsx";
         public static string Nomenclatures = Folder + "nomenclatures.xlsx";
